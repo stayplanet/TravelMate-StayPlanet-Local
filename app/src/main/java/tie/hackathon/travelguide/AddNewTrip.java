@@ -54,7 +54,7 @@ public class AddNewTrip extends AppCompatActivity implements DatePickerDialog.On
     private String enddate;
     private String tripname;
     private String userid;
-
+    //testgit
     private MaterialDialog      dialog;
     private Handler             mHandler;
     private SharedPreferences   sharedPreferences;
