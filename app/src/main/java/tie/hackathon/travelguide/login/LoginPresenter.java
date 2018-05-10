@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import okhttp3.HttpUrl;
 import utils.Constants;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -99,13 +100,31 @@ public class LoginPresenter {
 
         view.showLoadingDialog();
 
+
+        OkHttpClient client = new OkHttpClient();
+
+
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.apilink + "users/login.php").newBuilder();
+        urlBuilder.addQueryParameter("contact", num);
+        urlBuilder.addQueryParameter("password", pass);
+        String url = urlBuilder.build().toString();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+
+
+
+/*
         String uri = Constants.apilink + "users/login.php?contact=" + num + "&password=" + pass;
         //Set up client
         OkHttpClient client = new OkHttpClient();
         //Execute request
         Request request = new Request.Builder()
                 .url(uri)
-                .build();
+                .build();*/
         //Setup callback
         client.newCall(request).enqueue(new Callback() {
             @Override
